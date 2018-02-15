@@ -141,13 +141,13 @@ ATTENTION ! Je vous conseille de lire le forum en premier afin d'être sûr d'ef
 Télécharger le programme et le firmware ici : http://www.cartelectronic.fr/logiciels/Modif%20teleinfo%201TIC.zip
 (Pour le modem 1 compteur : http://www.cartelectronic.fr/blog/?p=1125)
 
--Installer le logiciel FT PROG
--exécuter FT PROG
--faire un scan (loupe) pour rechercher les modules USB
--une fois le module trouvé aller dans FILE -> OPEN TEMPLATE et sélectionner le fichier : Interface USB 1 TIC SF.xml
--cliquer sur le module détecté avec le bouton droit et sélectionner appliquer template
--cliquer sur le module détecté avec le bouton droit et sélectionner programmer
--A la fin le modem peux être débranché.
+- Installer le logiciel FT PROG
+- exécuter FT PROG
+- faire un scan (loupe) pour rechercher les modules USB
+- une fois le module trouvé aller dans FILE -> OPEN TEMPLATE et sélectionner le fichier : Interface USB 1 TIC SF.xml
+- cliquer sur le module détecté avec le bouton droit et sélectionner appliquer template
+- cliquer sur le module détecté avec le bouton droit et sélectionner programmer
+- A la fin le modem peux être débranché.
 
 >Un second équipement c'est créé lors de la mise à jour
 
@@ -176,6 +176,7 @@ Il est possible de forcer le calcul en relancant les 2 tâches suivantes depuis 
 >J'ai une installation DIY et je ne récupère aucune information
 
 Il est nécessaire dans certains cas de supprimer certaines lignes du fichier /boot/cmdline.txt
+
 Supprimer :
 
     console=ttyAMA0,115200 kgdboc=ttyAMA0,115200
