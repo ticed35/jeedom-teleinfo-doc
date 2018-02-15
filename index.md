@@ -136,7 +136,7 @@ Quelques unes (Les plus connues) :
 Plusieurs firmwares existent pour ce modem, seul le firmware linux est compatible avec Jeedom.
 Pour le mettre à jour :
 
-IMPORTANT: ATTENTION ! Je vous conseille de lire le forum en premier afin d'être sûr d'effectuer les bonnes actions. Je ne pourrais être tenu responsable des opérations effectuées.
+ATTENTION ! Je vous conseille de lire le forum en premier afin d'être sûr d'effectuer les bonnes actions. Je ne pourrais être tenu responsable des opérations effectuées.
 
 Télécharger le programme et le firmware ici : http://www.cartelectronic.fr/logiciels/Modif%20teleinfo%201TIC.zip
 (Pour le modem 1 compteur : http://www.cartelectronic.fr/blog/?p=1125)
@@ -175,20 +175,20 @@ Il est possible de forcer le calcul en relancant les 2 tâches suivantes depuis 
 
 >J'ai une installation DIY et je ne récupère aucune information
 
-Il est nécessaire dans certains cas de supprimer certaines lignes du fichier */boot/cmdline.txt*
+Il est nécessaire dans certains cas de supprimer certaines lignes du fichier /boot/cmdline.txt
 Supprimer :
-----
-console=ttyAMA0,115200 kgdboc=ttyAMA0,115200
-----
-et commenter la ligne suivante dans le fichier  */etc/inittab*
-----
- #T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
-----
+
+    console=ttyAMA0,115200 kgdboc=ttyAMA0,115200
+
+et commenter la ligne suivante dans le fichier  /etc/inittab
+
+    #T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
+
 Depuis la version jessie le fichier inittab n'est plus présent. Il faut utiliser ces lignes de commandes :
-----
-sudo systemctl stop serial-getty@ttyAMA0.service
-sudo systemctl disable serial-getty@ttyAMA0.service
-----
+
+    sudo systemctl stop serial-getty@ttyAMA0.service
+    sudo systemctl disable serial-getty@ttyAMA0.service
+
 
 >Comment récupérer les statistiques du plugin
 
