@@ -89,14 +89,14 @@ Le plugin téléinfo met à disposition une api afin de mettre à jour les donn�
 Il s'agit d'une URL d'appel de type GET.
 Pour y accéder ces informations sont obligatoires :
 
-URL = http://[red]#IP_JEEDOM#: [blue]#PORT_JEEDOM#/jeedom/plugins/teleinfo/core/php/jeeTeleinfo.php?api=[green]#VOTRE_API_JEEDOM#&ADCO=[grey]#IDENTIFIANT_DU_COMPTEUR#
+URL = http://#IP_JEEDOM#:#PORT_JEEDOM#/jeedom/plugins/teleinfo/core/php/jeeTeleinfo.php?api=#VOTRE_API_JEEDOM#&ADCO=#IDENTIFIANT_DU_COMPTEUR#
 
-[red]#IP_JEEDOM# correspond à l'adresse ip de votre Jeedom
-[blue]#PORT_JEEDOM# correspond au port d'accès à votre Jeedom
-[green]#VOTRE_API_JEEDOM# est la clé API disponible depuis le menu Général / Administration / Configuration
+#IP_JEEDOM# correspond à l'adresse ip de votre Jeedom
+#PORT_JEEDOM# correspond au port d'accès à votre Jeedom
+#VOTRE_API_JEEDOM# est la clé API disponible depuis le menu Général / Administration / Configuration
 ![teleinfo8](../images/teleinformation_api_menu1.png)
 
-[grey]#IDENTIFIANT_DU_COMPTEUR# correspond à l'ADCO de celui-ci. Cette information est obligatoirement transmise par le compteur lorsque vous recevez une trame.
+#IDENTIFIANT_DU_COMPTEUR# correspond à l'ADCO de celui-ci. Cette information est obligatoirement transmise par le compteur lorsque vous recevez une trame.
 
 Attention le /jeedom peux être différent si vous êtes sur une installation DIY ou OEM. En règle générale il faut l'ajouter.
 
@@ -142,33 +142,23 @@ Télécharger le programme et le firmware ici : http://www.cartelectronic.fr/log
 (Pour le modem 1 compteur : http://www.cartelectronic.fr/blog/?p=1125)
 
 -Installer le logiciel FT PROG
-
 -exécuter FT PROG
-
 -faire un scan (loupe) pour rechercher les modules USB
-
 -une fois le module trouvé aller dans FILE -> OPEN TEMPLATE et sélectionner le fichier : Interface USB 1 TIC SF.xml
-
 -cliquer sur le module détecté avec le bouton droit et sélectionner appliquer template
-
 -cliquer sur le module détecté avec le bouton droit et sélectionner programmer
-
 -A la fin le modem peux être débranché.
 
---
-[panel,primary]
-.Un second équipement c'est créé lors de la mise à jour
---
+>Un second équipement c'est créé lors de la mise à jour
+
 Un nouvel équipement peut apparaitre lorsque vous montez d'une version et que l'ancienne ne contenait pas l'ADCO du compteur.
 Pour récupérer l'ancien équipement :
 - Copier l'ADCO du nouvel objet dans celui de l'ancien.
 - Sauvegarder l'ancien.
 - Supprimer le nouveau.
 
---
-[panel,primary]
-.Success - No result has been sent s'affiche lorsque je clique sur Tester
---
+>Success - No result has been sent s'affiche lorsque je clique sur Tester
+
 Cela indique que la donnée n'a pas été reçu par le plugin.
 Deux cas sont possible :
 - La donnée n'existe pas sur votre abonnement.
@@ -176,19 +166,15 @@ Deux cas sont possible :
 
 Dans tous les cas il est nécessaire d'attendre 24h après l'installation du plugin pour être sûr des données qui sont reçu.
 
---
-[panel,primary]
-.Les statistiques restent à zero
---
+>Les statistiques restent à zero
+
 Il est nécessaire que l'historisation des index soit activée afin de que les statistiques se calcule.
 Il est possible de forcer le calcul en relancant les 2 tâches suivantes depuis le moteur de tâche :
 - CalculateTodayStats
 - CalculateOtherStats
 
---
-[panel,primary]
-.J'ai une installation DIY et je ne récupère aucune information
---
+>J'ai une installation DIY et je ne récupère aucune information
+
 Il est nécessaire dans certains cas de supprimer certaines lignes du fichier */boot/cmdline.txt*
 Supprimer :
 ----
@@ -204,10 +190,8 @@ sudo systemctl stop serial-getty@ttyAMA0.service
 sudo systemctl disable serial-getty@ttyAMA0.service
 ----
 
---
-[panel,primary]
-.Comment récupérer les statistiques du plugin
---
+>Comment récupérer les statistiques du plugin
+
 Suivant l'architecture choisie les logs du plugin peuvent êtres séparés.
 
 En mode local tous les logs se trouvent sur l'interface log de Jeedom (En mode expert : Général / Administration / Logs ; cf doc jeedom https://jeedom.fr/doc/documentation/core/fr_FR/doc-core-log.html[Accès doc])
@@ -216,24 +200,17 @@ En mode satellite :
 - Sur le maitre : Les logs de récupération / traitement des données. Les calculs des statistiques
 - Sur l'esclave : Les logs de lancement du daemon.
 
---
-[panel,primary]
-.Mon panel n'affiche pas les informations
---
+>Mon panel n'affiche pas les informations
+
 Dans un premier temps cliquer sur le bouton vérifier en haut à droite du panel afin de connaître l'état des données.
 Dans le cas ou une données est NOK aller sur l'objet téléinfo puis le re sauvegarder.
 
---
-[panel,primary]
-.Mes statistiques ne se mettent pas à jour / sont erronés
---
+>Mes statistiques ne se mettent pas à jour / sont erronés
+
 Afin que les statistiques soient calcullés il est nécessaire que les index soient historisés. Vérifier la bonne configuration de ceux-ci.
 Le lissage des historiques Jeedom peut induire des valeurs statistiques erronées. Pour supprimer le lissage pour chaque index :
 
 - Cliquer sur la petite roue à côté du bouton Tester (En mode expert)
-
 - Aller sur l'onglet Configuration Avancée
-
 - Dans la zone historique choisir Aucun pour le mode de lissage.
-
 - Enregistrer
