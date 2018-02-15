@@ -9,12 +9,12 @@ Plusieurs architectures peuvent être ensuite choisis :
 ![teleinfo2](../images/teleinfo_archi.png)
 
 
-+ Cas d'utilisation de 2 compteurs
+# Cas d'utilisation de 2 compteurs
 Dans le cas d'utilisation du modem Cartelectronic 2 Compteurs et le branchement de 2 compteurs électrique il est nécessaire d'activer le mode 2 compteurs.
 ![teleinfo3](../images/teleinformation_2compteurs.png)
 
 
-+ Installation
+# Installation
 Commencer par installer le plugin depuis le market : https://www.jeedom.fr/doc/documentation/core/fr_FR/doc-core-plugin.html
 
 Après avoir activé le plugin vous devez choisir le port du modem :
@@ -27,7 +27,7 @@ Enfin pensez à sauvegarder.
 
 Un nouveau Protocole est disponible dans Plugins => Protocole domotique => Téléinfo
 
-+ Configuration
+# Configuration
 Le plugin offre la possibilité de créer automatiquement les commandes réceptionnées. Pour cela démarrez le daemon, attendez que les premières trames arrivent puis rendez vous sur Plugin / Protocoles Domotiques / Téléinfo.
 Vous devriez voir apparaitre un objet avec un ID.
 Cliquez dessus et sélectionnez "Création automatique des commandes" en haut à droite, enfin sauvegardez. A partir de ce moment toutes les commandes reçu et non reconnu seront ajoutée automatiquement.
@@ -39,7 +39,7 @@ Vous pouvez également créer votre appareil manuellement :
 -   Renseignez le nom affiché dans Jeedom, le Sous-Type en fonction de l'information qui sera récupérée, la donnée à récupérer et enfin les paramètres associés.
 -   Cliquez sur sauvegarder.
 
-+ Les commandes
+# Les commandes
 Les commandes (Ajouter une donnée) correspondent aux données envoyées par le modem.
 
 Celles-ci peuvent êtres les suivantes :
@@ -55,7 +55,7 @@ Celles-ci peuvent êtres les suivantes :
 -   Préavis EJP (30 minutes avant)
 -   Couleur EJP lendemin.
 
-+ Les statistiques
+# Les statistiques
 Afin d'obtenir des informations sur une durée plus longue des statistiques ont étés ajoutées.
 Ces statistiques correspondent aux informations suivantes :
 -   Consommation du jour en cours
@@ -65,7 +65,7 @@ Ces statistiques correspondent aux informations suivantes :
 -   Tendance journalière de la consommation (Pour être informé si l'on consomme plus ou moins par rapport au jour précédent à la même heure)
 -   Puissance apparente : Certains compteurs ne renvoie pas l'information PAPP. Pour cela un calcul à été implémenté afin d'obtenir une moyenne de consommation en W toutes les minutes.
 
-+ Les unités
+# Les unités
 -   Les index : Watt-heure
 -   Tranche tarifaire : Chaîne de caractères.
 -   Puissance apparente instantanée : Volt-Ampère.
@@ -75,7 +75,7 @@ Ces statistiques correspondent aux informations suivantes :
 -   Le préavis EJP et la couleur du lendemn : Chaîne de caractères.
 -   La conso moyenne sur la dernière minute : Watt
 
-+ Santé
+# Santé
 Il est possible de vérifier la réception des données avant traitement.
 
 Pour cela rendez vous sur l'objet téléinfo puis cliquez sur Santé
@@ -84,19 +84,19 @@ Pour cela rendez vous sur l'objet téléinfo puis cliquez sur Santé
 La fenêtre qui s'ouvre permet de vérifier la bonne reception des données :
 ![teleinfo7](../images/teleinformation_sante.png)
 
-+ API
+# API
 Le plugin téléinfo met à disposition une api afin de mettre à jour les données depuis d'autres systèmes.
 Il s'agit d'une URL d'appel de type GET.
 Pour y accéder ces informations sont obligatoires :
 
 URL = http://#IP_JEEDOM#:#PORT_JEEDOM#/jeedom/plugins/teleinfo/core/php/jeeTeleinfo.php?api=#VOTRE_API_JEEDOM#&ADCO=#IDENTIFIANT_DU_COMPTEUR#
 
-#IP_JEEDOM# correspond à l'adresse ip de votre Jeedom
-#PORT_JEEDOM# correspond au port d'accès à votre Jeedom
-#VOTRE_API_JEEDOM# est la clé API disponible depuis le menu Général / Administration / Configuration
-![teleinfo8](../images/teleinformation_api_menu1.png)
+ #IP_JEEDOM# correspond à l'adresse ip de votre Jeedom
+ #PORT_JEEDOM# correspond au port d'accès à votre Jeedom
+ #VOTRE_API_JEEDOM# est la clé API disponible depuis le menu Général / Administration / Configuration
+ ![teleinfo8](../images/teleinformation_api_menu1.png)
 
-#IDENTIFIANT_DU_COMPTEUR# correspond à l'ADCO de celui-ci. Cette information est obligatoirement transmise par le compteur lorsque vous recevez une trame.
+ #IDENTIFIANT_DU_COMPTEUR# correspond à l'ADCO de celui-ci. Cette information est obligatoirement transmise par le compteur lorsque vous recevez une trame.
 
 Attention le /jeedom peux être différent si vous êtes sur une installation DIY ou OEM. En règle générale il faut l'ajouter.
 
@@ -129,7 +129,7 @@ Quelques unes (Les plus connues) :
 	* IINST
 	* ADPS
 
-+ FAQ
+# FAQ
 
 >J'ai un modem Cartelectronic qui n'envoi aucune information
 
@@ -182,7 +182,7 @@ console=ttyAMA0,115200 kgdboc=ttyAMA0,115200
 ----
 et commenter la ligne suivante dans le fichier  */etc/inittab*
 ----
-#T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
+ #T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
 ----
 Depuis la version jessie le fichier inittab n'est plus présent. Il faut utiliser ces lignes de commandes :
 ----
