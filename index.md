@@ -3,24 +3,33 @@ Le plugin Téléinformation permet de récupérer les informations de votre comp
 
 # Architecture
 Pour récupérer la Téléinformation il faut se connecter sur les bornes I1 et I2 du compteur :
+
 ![teleinfo1](../images/teleinfo_compteur.png)
 
-Plusieurs architectures peuvent être ensuite choisis :
 ![teleinfo2](../images/teleinfo_archi.png)
 
 
-# Cas d'utilisation de 2 compteurs
+# Cas d'utilisation de plusieurs compteurs
+
+## Utilisation du modem Cartelectronic 2 Compteurs
 Dans le cas d'utilisation du modem Cartelectronic 2 Compteurs et le branchement de 2 compteurs électrique il est nécessaire d'activer le mode 2 compteurs.
+
 ![teleinfo3](../images/teleinformation_2compteurs.png)
 
+## Utilisation d'un second compteur pour de la production électrique
+Dans ce cas il faut activer le mode production du plugin :
+
+![teleinfo31](../images/teleinformation_production.png)
 
 # Installation
 Commencer par installer le plugin depuis le market : https://www.jeedom.fr/doc/documentation/core/fr_FR/doc-core-plugin.html
 
 Après avoir activé le plugin vous devez choisir le port du modem :
+
 ![teleinfo4](../images/teleinformation_plugin.png)
 
 En cas d'utilisation d'un modem série il est nécessaire de renseigner son port et d'ajouter ce port au groupe dialout.
+
 ![teleinfo5](../images/teleinformation_serie.png)
 
 Enfin pensez à sauvegarder.
@@ -30,6 +39,10 @@ Un nouveau Protocole est disponible dans Plugins => Protocole domotique => Tél�
 # Configuration
 Le plugin offre la possibilité de créer automatiquement les commandes réceptionnées. Pour cela démarrez le daemon, attendez que les premières trames arrivent puis rendez vous sur Plugin / Protocoles Domotiques / Téléinfo.
 Vous devriez voir apparaitre un objet avec un ID.
+
+>Il est possible de désactiver la création automatique des nouveaux compteurs.
+>![teleinfo51](../images/teleinformation_blocage.png)
+
 Cliquez dessus et sélectionnez "Création automatique des commandes" en haut à droite, enfin sauvegardez. A partir de ce moment toutes les commandes reçu et non reconnu seront ajoutée automatiquement.
 
 Vous pouvez également créer votre appareil manuellement :
@@ -79,9 +92,11 @@ Ces statistiques correspondent aux informations suivantes :
 Il est possible de vérifier la réception des données avant traitement.
 
 Pour cela rendez vous sur l'objet téléinfo puis cliquez sur Santé
+
 ![teleinfo6](../images/teleinformation_btsante.png)
 
 La fenêtre qui s'ouvre permet de vérifier la bonne reception des données :
+
 ![teleinfo7](../images/teleinformation_sante.png)
 
 # API
@@ -94,6 +109,7 @@ URL = http://#IP_JEEDOM#:#PORT_JEEDOM#/jeedom/plugins/teleinfo/core/php/jeeTelei
  #IP_JEEDOM# correspond à l'adresse ip de votre Jeedom
  #PORT_JEEDOM# correspond au port d'accès à votre Jeedom
  #VOTRE_API_JEEDOM# est la clé API disponible depuis le menu Général / Administration / Configuration
+
  ![teleinfo8](../images/teleinformation_api_menu1.png)
 
  #IDENTIFIANT_DU_COMPTEUR# correspond à l'ADCO de celui-ci. Cette information est obligatoirement transmise par le compteur lorsque vous recevez une trame.
@@ -110,11 +126,11 @@ L'URL sera donc surchargée de toutes information utile.
 
 Par exemple :
 
-IP_JEEDOM : 192.168.1.15
-PORT_JEEDOM : 80
-VOTRE_API_JEEDOM : zertyuiolkjhgfdsxc
-IDENTIFIANT_DU_COMPTEUR : 0095123657
-Index BASE : 123456789
+    IP_JEEDOM : 192.168.1.15
+    PORT_JEEDOM : 80
+    VOTRE_API_JEEDOM : zertyuiolkjhgfdsxc
+    IDENTIFIANT_DU_COMPTEUR : 0095123657
+    Index BASE : 123456789
 
 Donnera l'URL : http://192.168.1.15:80/jeedom/plugins/teleinfo/core/php/jeeTeleinfo.php?api=zertyuiolkjhgfdsxc&ADCO=0095123657*&BASE=123456789*
 
@@ -138,8 +154,8 @@ Pour le mettre à jour :
 
 ATTENTION ! Je vous conseille de lire le forum en premier afin d'être sûr d'effectuer les bonnes actions. Je ne pourrais être tenu responsable des opérations effectuées.
 
-Télécharger le programme et le firmware ici : http://www.cartelectronic.fr/logiciels/Modif%20teleinfo%201TIC.zip
-(Pour le modem 1 compteur : http://www.cartelectronic.fr/blog/?p=1125)
+Télécharger le programme et le firmware ici : [http://www.cartelectronic.fr/logiciels/Modif%20teleinfo%201TIC.zip](http://www.cartelectronic.fr/logiciels/Modif%20teleinfo%201TIC.zip)
+(Pour le modem 1 compteur : [http://www.cartelectronic.fr/blog/?p=1125](http://www.cartelectronic.fr/blog/?p=1125))
 
 - Installer le logiciel FT PROG
 - exécuter FT PROG
@@ -195,7 +211,9 @@ Depuis la version jessie le fichier inittab n'est plus présent. Il faut utilise
 
 Suivant l'architecture choisie les logs du plugin peuvent êtres séparés.
 
-En mode local tous les logs se trouvent sur l'interface log de Jeedom (En mode expert : Général / Administration / Logs ; cf doc jeedom https://jeedom.fr/doc/documentation/core/fr_FR/doc-core-log.html[Accès doc])
+En mode local tous les logs se trouvent sur l'interface log de Jeedom (En mode expert : Général / Administration / Logs ; cf doc jeedom
+
+[Accès doc](https://jeedom.fr/doc/documentation/core/fr_FR/doc-core-log.html)
 
 En mode satellite :
 - Sur le maitre : Les logs de récupération / traitement des données. Les calculs des statistiques
@@ -215,3 +233,11 @@ Le lissage des historiques Jeedom peut induire des valeurs statistiques erronée
 - Aller sur l'onglet Configuration Avancée
 - Dans la zone historique choisir Aucun pour le mode de lissage.
 - Enregistrer
+
+
+
+# Bug
+
+En cas de bug avéré du plugin il est possible d'ouvrir une issue :
+
+[https://github.com/Jeedom-Plugins-Extra/plugin-teleinfo/issues](https://github.com/Jeedom-Plugins-Extra/plugin-teleinfo/issues)
